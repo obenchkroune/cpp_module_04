@@ -4,7 +4,7 @@
 int main(void)
 {
     {
-        IAnimal *animals[10];
+        Animal *animals[10];
         for (int i = 0; i < 5; i++)
             animals[i] = new Dog();
         for (int i = 5; i < 10; i++)
@@ -15,8 +15,8 @@ int main(void)
     }
 
     {
-        const IAnimal* j = new Dog();
-        const IAnimal* i = new Cat();
+        const Animal* j = new Dog();
+        const Animal* i = new Cat();
         delete j;//should not create a leak
         delete i;
     }

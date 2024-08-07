@@ -3,7 +3,7 @@ NAME            =   ex01
 CXX             =   c++
 CXXFLAGS        =   -Wall -Werror -Wextra -std=c++98 -Iinclude
 
-SRC             =   $(shell find . -type f -name '*.cpp')
+SRC             =   ./src/Brain.cpp ./src/main.cpp ./src/Animal.cpp ./src/Cat.cpp ./src/Dog.cpp
 OBJ             =   $(SRC:.cpp=.o)
 
 RM              =   rm -rf

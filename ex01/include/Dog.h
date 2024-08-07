@@ -4,7 +4,7 @@
 #include "Animal.h"
 #include "Brain.h"
 
-class Dog : public AAnimal
+class Dog : public Animal
 {
 private:
     Brain *m_brain;

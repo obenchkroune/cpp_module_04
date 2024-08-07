@@ -1,11 +1,11 @@
 #include "Dog.h"
 
-Dog::Dog() : IAnimal("Dog"), m_brain(new Brain())
+Dog::Dog() : Animal("Dog"), m_brain(new Brain())
 {
     std::cout << "[Dog] Default Constructor Called!\n";
 }
 
-Dog::Dog(const Dog &other) : IAnimal("Dog"), m_brain(new Brain())
+Dog::Dog(const Dog &other) : Animal("Dog"), m_brain(new Brain())
 {
     std::cout << "[Dog] Copy Constructor Called!\n";
     *this = other;

@@ -1,11 +1,11 @@
 #include "Cat.h"
 
-Cat::Cat() : IAnimal("Cat"), m_brain(new Brain())
+Cat::Cat() : Animal("Cat"), m_brain(new Brain())
 {
     std::cout << "[Cat] Default Constructor Called!\n";
 }
 
-Cat::Cat(const Cat &other) : IAnimal("Cat"), m_brain(new Brain())
+Cat::Cat(const Cat &other) : Animal("Cat"), m_brain(new Brain())
 {
     std::cout << "[Cat] Copy Constructor Called!\n";
     *this = other;
