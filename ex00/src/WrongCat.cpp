@@ -1,30 +1,34 @@
 #include "WrongCat.h"
 
+using std::cout;
+using std::endl;
+
 WrongCat::WrongCat() : WrongAnimal("Cat")
 {
-    std::cout << "[WrongCat] Default Constructor Called!\n";
-}
-
-WrongCat::WrongCat(const WrongCat &other) : WrongAnimal("Cat")
-{
-    std::cout << "[WrongCat] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[WrongCat] Constructor Called" << endl;
 }
 
 WrongCat::~WrongCat()
 {
-    std::cout << "[WrongCat] Destructor Called!\n";
+	cout << "[WrongCat] Destructor Called" << endl;
+}
+
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal("Cat")
+{
+	cout << "[WrongCat] Copy Constructor Called" << endl;
+	*this = other;
 }
 
 WrongCat &WrongCat::operator=(const WrongCat &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+	}
+	return *this;
 }
 
 void WrongCat::makeSound() const
 {
-    std::cout << "Meow\n";
+	cout << "Meow" << endl;
 }

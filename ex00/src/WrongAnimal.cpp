@@ -1,40 +1,49 @@
 #include "WrongAnimal.h"
 
-WrongAnimal::WrongAnimal() : m_type("RandomAnimal")
+using std::cout;
+using std::endl;
+
+WrongAnimal::WrongAnimal()
 {
-    std::cout << "[WrongAnimal] Default Constructor Called!\n";
+	cout << "[WrongAnimal] Constructor Called" << endl;
 }
 
-WrongAnimal::WrongAnimal(std::string type) : m_type(type)
+WrongAnimal::WrongAnimal(string type)
 {
-    std::cout << "[WrongAnimal] Param Constructor Called!\n";
-}
-
-WrongAnimal::WrongAnimal(const WrongAnimal &other)
-{
-    std::cout << "[WrongAnimal] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[WrongAnimal] Constructor Called" << endl;
+	m_type = type;
 }
 
 WrongAnimal::~WrongAnimal()
 {
-    std::cout << "[WrongAnimal] Destructor Called!\n";
+	cout << "[WrongAnimal] Destructor Called" << endl;
+}
+
+WrongAnimal::WrongAnimal(const WrongAnimal &other)
+{
+	*this = other;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+	}
+	return *this;
 }
 
-const std::string &WrongAnimal::getType() const
+void WrongAnimal::setType(string type)
 {
-    return m_type;
+	m_type = type;
+}
+
+const string WrongAnimal::getType() const
+{
+	return m_type;
 }
 
 void WrongAnimal::makeSound() const
 {
-    std::cout << "A Random WrongAnimal Sound\n";
+	cout << "Unknown Animal Sound" << endl;
 }

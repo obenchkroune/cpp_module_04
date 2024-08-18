@@ -1,20 +1,30 @@
 NAME            =   ex00
 
 CXX             =   c++
-CXXFLAGS        =   -Wall -Werror -Wextra -std=c++98 -Iinclude
+CXXFLAGS        =   -Wall -Werror -Wextra -std=c++98 -Iinclude -MMD -MP
 
-SRC             =   ./src/main.cpp ./src/Animal.cpp ./src/Cat.cpp ./src/Dog.cpp ./src/WrongCat.cpp ./src/WrongAnimal.cpp
-OBJ             =   $(SRC:.cpp=.o)
+BUILD_DIR       =   build
+SRC_DIR         =   src
+
+SRC             =   $(shell find $(SRC_DIR) -type f -name '*.cpp')
+OBJ             =   $(SRC:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
+DEP             =   $(OBJ:.o=.d)
 
 RM              =   rm -rf
 
 all: $(NAME)
 
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
+-include $(DEP)
+
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(BUILD_DIR)
 
 fclean: clean
 	$(RM) $(NAME)

@@ -1,30 +1,34 @@
 #include "Dog.h"
 
+using std::cout;
+using std::endl;
+
 Dog::Dog() : Animal("Dog")
 {
-    std::cout << "[Dog] Default Constructor Called!\n";
-}
-
-Dog::Dog(const Dog &other) : Animal("Dog")
-{
-    std::cout << "[Dog] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[Dog] Constructor Called" << endl;
 }
 
 Dog::~Dog()
 {
-    std::cout << "[Dog] Destructor Called!\n";
+	cout << "[Dog] Destructor Called" << endl;
+}
+
+Dog::Dog(const Dog &other) : Animal("Dog")
+{
+	cout << "[Dog] Copy Constructor Called" << endl;
+	*this = other;
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+	}
+	return *this;
 }
 
 void Dog::makeSound() const
 {
-    std::cout << "Bark\n";
+	cout << "Bark" << endl;
 }

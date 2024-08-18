@@ -1,21 +1,22 @@
-#ifndef __WRONGANIMAL_H__
-#define __WRONGANIMAL_H__
+#pragma once
 
 #include <iostream>
 
+using std::string;
+
 class WrongAnimal
 {
-protected:
-    std::string m_type;
-
 public:
-    WrongAnimal();
-    WrongAnimal(std::string type);
-    WrongAnimal(const WrongAnimal &other);
-    ~WrongAnimal();
-    WrongAnimal &operator=(const WrongAnimal &other);
-    const std::string &getType() const;
-    void makeSound() const;
-};
+	WrongAnimal();
+	WrongAnimal(string type);
+	WrongAnimal(const WrongAnimal &other);
+	WrongAnimal &operator=(const WrongAnimal &other);
+	virtual ~WrongAnimal();
 
-#endif
+	void			setType(string type);
+	const string	getType() const;
+	void			makeSound() const;
+
+protected:
+	string	m_type;
+};

@@ -1,30 +1,34 @@
 #include "Cat.h"
 
+using std::cout;
+using std::endl;
+
 Cat::Cat() : Animal("Cat")
 {
-    std::cout << "[Cat] Default Constructor Called!\n";
-}
-
-Cat::Cat(const Cat &other) : Animal("Cat")
-{
-    std::cout << "[Cat] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[Cat] Constructor Called" << endl;
 }
 
 Cat::~Cat()
 {
-    std::cout << "[Cat] Destructor Called!\n";
+	cout << "[Cat] Destructor Called" << endl;
+}
+
+Cat::Cat(const Cat &other) : Animal("Cat")
+{
+	cout << "[Cat] Copy Constructor Called" << endl;
+	*this = other;
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+	}
+	return *this;
 }
 
 void Cat::makeSound() const
 {
-    std::cout << "Meow\n";
+	cout << "Meow" << endl;
 }

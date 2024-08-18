@@ -1,16 +1,14 @@
-#ifndef __CAT_H__
-#define __CAT_H__
+#pragma once
 
 #include "Animal.h"
 
 class Cat : public Animal
 {
 public:
-    Cat();
-    Cat(const Cat &other);
-    ~Cat();
-    Cat &operator=(const Cat &other);
-    void makeSound() const;
-};
+	Cat();
+	Cat(const Cat &other);
+	Cat &operator=(const Cat &other);
+	~Cat();
 
-#endif
+	void	makeSound() const;
+};
