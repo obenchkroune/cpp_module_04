@@ -1,7 +1,5 @@
 #include "Dog.h"
 #include "Cat.h"
-#include "Dog.h"
-#include "Cat.h"
 
 int main()
 {
