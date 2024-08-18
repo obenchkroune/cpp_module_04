@@ -1,42 +1,46 @@
 #include "Cat.h"
 
+using std::cout;
+using std::endl;
+
 Cat::Cat() : Animal("Cat"), m_brain(new Brain())
 {
-    std::cout << "[Cat] Default Constructor Called!\n";
-}
-
-Cat::Cat(const Cat &other) : Animal("Cat"), m_brain(new Brain())
-{
-    std::cout << "[Cat] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[Cat] Constructor Called" << endl;
 }
 
 Cat::~Cat()
 {
-    std::cout << "[Cat] Destructor Called!\n";
-    delete m_brain;
+	cout << "[Cat] Destructor Called" << endl;
+	delete m_brain;
+}
+
+Cat::Cat(const Cat &other) : Animal("Cat"), m_brain(new Brain())
+{
+	cout << "[Cat] Copy Constructor Called" << endl;
+	*this = other;
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    m_brain = other.m_brain;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+		*m_brain = *other.m_brain;
+	}
+	return *this;
 }
 
 void Cat::makeSound() const
 {
-    std::cout << "Meow\n";
+	cout << "Meow" << endl;
 }
 
-void Cat::setIdea(unsigned int idx, std::string value)
+void Cat::setIdea(unsigned int idx, const string &value)
 {
-    m_brain->setIdea(idx, value);
+	m_brain->setIdea(idx, value);
 }
 
-const std::string &Cat::getIdea(unsigned int idx) const
+const string &Cat::getIdea(unsigned int idx) const
 {
-    return m_brain->getIdea(idx);
+	return m_brain->getIdea(idx);
 }

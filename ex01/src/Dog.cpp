@@ -1,43 +1,46 @@
 #include "Dog.h"
 
+using std::cout;
+using std::endl;
+
 Dog::Dog() : Animal("Dog"), m_brain(new Brain())
 {
-    std::cout << "[Dog] Default Constructor Called!\n";
-}
-
-Dog::Dog(const Dog &other) : Animal("Dog"), m_brain(new Brain())
-{
-    std::cout << "[Dog] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[Dog] Constructor Called" << endl;
 }
 
 Dog::~Dog()
 {
-    std::cout << "[Dog] Destructor Called!\n";
-    delete m_brain;
+	cout << "[Dog] Destructor Called" << endl;
+	delete m_brain;
+}
+
+Dog::Dog(const Dog &other) : Animal("Dog"), m_brain(new Brain())
+{
+	cout << "[Dog] Copy Constructor Called" << endl;
+	*this = other;
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    m_brain = other.m_brain;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+		*m_brain = *other.m_brain;
+	}
+	return *this;
 }
 
 void Dog::makeSound() const
 {
-    std::cout << "Bark\n";
+	cout << "Bark" << endl;
 }
 
-void Dog::setIdea(unsigned int idx, std::string value)
+void Dog::setIdea(unsigned int idx, const string &value)
 {
-    m_brain->setIdea(idx, value);
+	m_brain->setIdea(idx, value);
 }
 
-const std::string &Dog::getIdea(unsigned int idx) const
+const string &Dog::getIdea(unsigned int idx) const
 {
-    return m_brain->getIdea(idx);
+	return m_brain->getIdea(idx);
 }
-

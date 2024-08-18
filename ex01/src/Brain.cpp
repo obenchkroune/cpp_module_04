@@ -1,47 +1,45 @@
 #include "Brain.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 Brain::Brain()
 {
-    std::cout << "[Brain] Default Constructor Called!\n";
-}
-
-Brain::Brain(std::string ideas[100])
-{
-    std::cout << "[Brain] Param Constructor Called!\n";
-    for (int i = 0; i < 100; i++)
-        m_ideas[i] = ideas[i];
+	cout << "[Brain] Constructor Called" << endl;
 }
 
 Brain::Brain(const Brain &other)
 {
-    std::cout << "[Brain] Copy Constructor Called!\n";
-    *this = other;
-}
-
-Brain::~Brain()
-{
-    std::cout << "[Brain] Destructor Called!\n";
+	cout << "[Brain] Copy Constructor Called" << endl;
+	*this = other;
 }
 
 Brain &Brain::operator=(const Brain &other)
 {
-    if (this == &other)
-        return *this;
-    for (int i = 0; i < 100; i++)
-        m_ideas[i] = other.m_ideas[i];
-    return *this;
+	if (this != &other)
+	{
+		for (int i = 0; i < 100; i++)
+			m_ideas[i] = other.m_ideas[i];
+	}
+	return *this;
 }
 
-void Brain::setIdea(unsigned int idx, std::string value)
+Brain::~Brain()
 {
-    if (idx >= 100)
-        return ;
-    m_ideas[idx] = value;
+	cout << "[Brain] Destructor Called" << endl;
 }
 
-const std::string &Brain::getIdea(unsigned int idx) const
+void	Brain::setIdea(unsigned int idx, const string &value)
 {
-    if (idx >= 100)
-        return m_ideas[99];
-    return m_ideas[idx];
+	if (idx > 99)
+		return ;
+	m_ideas[idx] = value;
+}
+
+const string	&Brain::getIdea(unsigned int idx) const
+{
+	if (idx > 99)
+		return m_ideas[99];
+	return m_ideas[idx];
 }

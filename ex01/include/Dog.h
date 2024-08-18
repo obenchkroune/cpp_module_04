@@ -1,22 +1,20 @@
-#ifndef __DOG_H__
-#define __DOG_H__
+#pragma once
 
 #include "Animal.h"
 #include "Brain.h"
 
 class Dog : public Animal
 {
-private:
-    Brain *m_brain;
-    
 public:
-    Dog();
-    Dog(const Dog &other);
-    ~Dog();
-    Dog &operator=(const Dog &other);
-    void makeSound() const;
-    void setIdea(unsigned int idx, std::string value);
-    const std::string &getIdea(unsigned int idx) const;
-};
+	Dog();
+	Dog(const Dog &other);
+	Dog &operator=(const Dog &other);
+	~Dog();
 
-#endif
+	void			makeSound() const;
+	void			setIdea(unsigned int idx, const string &value);
+	const string	&getIdea(unsigned int idx) const;
+
+private:
+	Brain	*m_brain;
+};

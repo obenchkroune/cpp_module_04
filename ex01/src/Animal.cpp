@@ -1,40 +1,49 @@
 #include "Animal.h"
 
-Animal::Animal() : m_type("RandomAnimal")
+using std::cout;
+using std::endl;
+
+Animal::Animal()
 {
-    std::cout << "[Animal] Default Constructor Called!\n";
+	cout << "[Animal] Constructor Called" << endl;
 }
 
-Animal::Animal(std::string type) : m_type(type)
+Animal::Animal(string type)
 {
-    std::cout << "[Animal] Param Constructor Called!\n";
-}
-
-Animal::Animal(const Animal &other)
-{
-    std::cout << "[Animal] Copy Constructor Called!\n";
-    *this = other;
+	cout << "[Animal] Constructor Called" << endl;
+	m_type = type;
 }
 
 Animal::~Animal()
 {
-    std::cout << "[Animal] Destructor Called!\n";
+	cout << "[Animal] Destructor Called" << endl;
+}
+
+Animal::Animal(const Animal &other)
+{
+	*this = other;
 }
 
 Animal &Animal::operator=(const Animal &other)
 {
-    if (this == &other)
-        return *this;
-    m_type = other.m_type;
-    return *this;
+	if (this != &other)
+	{
+		m_type = other.m_type;
+	}
+	return *this;
 }
 
-const std::string &Animal::getType() const
+void Animal::setType(string type)
 {
-    return m_type;
+	m_type = type;
+}
+
+const string Animal::getType() const
+{
+	return m_type;
 }
 
 void Animal::makeSound() const
 {
-    std::cout << "A Random Animal Sound\n";
+	cout << "Unknown Animal Sound" << endl;
 }

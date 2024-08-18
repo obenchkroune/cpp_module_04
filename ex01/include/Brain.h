@@ -1,21 +1,19 @@
-#ifndef __BRAIN_H__
-#define __BRAIN_H__
+#pragma once
 
-#include <iostream>
+#include <string>
+
+using std::string;
 
 class Brain
 {
-protected:
-    std::string m_ideas[100];
-
 public:
-    Brain();
-    Brain(std::string ideas[100]);
-    Brain(const Brain &other);
-    ~Brain();
-    Brain &operator=(const Brain &other);
-    void setIdea(unsigned int idx, std::string value);
-    const std::string &getIdea(unsigned int idx) const;
-};
+	Brain();
+	Brain(const Brain &other);
+	Brain &operator=(const Brain &other);
+	~Brain();
 
-#endif
+	void			setIdea(unsigned int idx, const string &value);
+	const string	&getIdea(unsigned int idx) const;
+private:
+	string m_ideas[100];
+};

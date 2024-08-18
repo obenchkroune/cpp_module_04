@@ -1,24 +1,26 @@
+#include "Dog.h"
 #include "Cat.h"
 #include "Dog.h"
+#include "Cat.h"
 
-int main(void)
+int main()
 {
-    {
-        Animal *animals[10];
-        for (int i = 0; i < 5; i++)
-            animals[i] = new Dog();
-        for (int i = 5; i < 10; i++)
-            animals[i] = new Cat();
+	Animal *animals[4];
 
-        for (int i = 0; i < 10; i++)
-            delete animals[i];
-    }
+	for (int i = 0; i < 2; i++)
+		animals[i] = new Dog();
+	for (int i = 2; i < 4; i++)
+		animals[i] = new Cat();
 
-    {
-        const Animal* j = new Dog();
-        const Animal* i = new Cat();
-        delete j;//should not create a leak
-        delete i;
-    }
-    return 0;
+	Cat *cat = static_cast<Cat *>(animals[2]);
+	cat->setIdea(0, "Eat");
+	cat->setIdea(1, "Sleep");
+	cat->setIdea(2, "Play");
+	cat->setIdea(3, "Repeat");
+	Cat cat_copy(*cat); // deep copy test
+
+	for (int i = 0; i < 4; i++)
+		delete animals[i];
+	for (int i = 0; i < 4; i++)
+		std::cout << "- " << cat_copy.getIdea(i) << '\n';
 }

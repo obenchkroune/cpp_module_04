@@ -1,21 +1,22 @@
-#ifndef __ANIMAL_H__
-#define __ANIMAL_H__
+#pragma once
 
 #include <iostream>
 
+using std::string;
+
 class Animal
 {
-protected:
-    std::string m_type;
-
 public:
-    Animal();
-    Animal(std::string type);
-    Animal(const Animal &other);
-    virtual ~Animal();
-    Animal &operator=(const Animal &other);
-    const std::string &getType() const;
-    virtual void makeSound() const;
-};
+	Animal();
+	Animal(string type);
+	Animal(const Animal &other);
+	Animal &operator=(const Animal &other);
+	virtual ~Animal();
 
-#endif
+	void			setType(string type);
+	const string	getType() const;
+	virtual void	makeSound() const;
+
+protected:
+	string	m_type;
+};

@@ -1,22 +1,20 @@
-#ifndef __CAT_H__
-#define __CAT_H__
+#pragma once
 
 #include "Animal.h"
 #include "Brain.h"
 
 class Cat : public Animal
 {
-private:
-    Brain *m_brain;
-    
 public:
-    Cat();
-    Cat(const Cat &other);
-    ~Cat();
-    Cat &operator=(const Cat &other);
-    void makeSound() const;
-    void setIdea(unsigned int idx, std::string value);
-    const std::string &getIdea(unsigned int idx) const;
-};
+	Cat();
+	Cat(const Cat &other);
+	Cat &operator=(const Cat &other);
+	~Cat();
 
-#endif
+	void			makeSound() const;
+	void			setIdea(unsigned int idx, const string &value);
+	const string	&getIdea(unsigned int idx) const;
+
+private:
+	Brain	*m_brain;
+};
