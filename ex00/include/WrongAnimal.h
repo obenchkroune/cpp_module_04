@@ -4,8 +4,7 @@
 
 using std::string;
 
-class WrongAnimal
-{
+class WrongAnimal {
 public:
 	WrongAnimal();
 	WrongAnimal(string type);
