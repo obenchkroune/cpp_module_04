@@ -6,7 +6,7 @@ CXXFLAGS        =   -Wall -Werror -Wextra -std=c++98 -Iinclude -MMD -MP -fsaniti
 BUILD_DIR       =   build
 SRC_DIR         =   src
 
-SRC             =   $(shell find $(SRC_DIR) -type f -name '*.cpp')
+SRC             =   src/main.cpp src/Ice.cpp src/Character.cpp src/AMateria.cpp src/MateriaSource.cpp src/Cure.cpp
 OBJ             =   $(SRC:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 DEP             =   $(OBJ:.o=.d)
 
